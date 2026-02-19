@@ -24,11 +24,7 @@
     <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
     <build.timestamp>${maven.build.timestamp}</build.timestamp>
     </properties>
-         <distributionManagement>
-        <repository>
-            <id>maven-custom-pranav</id>
-            <url>http://192.168.0.32:8081/repository/maven-custom-pranav/</url>
-        </repository>
+         
        
     </distributionManagement>
 
