@@ -4,13 +4,20 @@
     <groupId>training.taylor.time-tracker</groupId>
     <artifactId>time-tracker-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.6.0-SNAPSHOT</version>
+    <version>1.0.0-${maven.build.timestamp}</version>
     <name>Time Tracker (Parent)</name>
     <description>
         This is a simple Maven / Java web project.
     </description>
     <inceptionYear>2017</inceptionYear>
     <url>http://taylor.training/</url>
+         <distributionManagement>
+        <repository>
+            <id>maven-custom-pranav</id>
+            <url>http://192.168.0.32:8081/repository/maven-custom-pranav/</url>
+        </repository>
+       
+    </distributionManagement>
 
     <properties>
         <spring.version>5.3.20</spring.version>
@@ -20,7 +27,11 @@
         <findbugs.version>3.0.5</findbugs.version>
         <pmd.version>6.46.0</pmd.version>
         <checkstyle.version>2.17</checkstyle.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+    <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+    <build.timestamp>${maven.build.timestamp}</build.timestamp>
+
+
     </properties>
 
     <modules>
@@ -31,6 +42,26 @@
     <build>
         <pluginManagement>
             <plugins>
+                     <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.11</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- attached to Maven test phase -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
